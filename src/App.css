@@ -1,38 +1,102 @@
-.App {
-  text-align: center;
+@import url("https://fonts.googleapis.com/css2?family=Rubik&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap");
+
+:root {
+	--mainbg: #0f172a;
+	--card: #164e63;
+	--primary: #ecfeff;
+	--head: #67e8f9;
+}
+* {
+	box-sizing: border-box;
+}
+body {
+	background-color: var(--mainbg);
+	color: var(--primary);
+	font-family: "Rubik", sans-serif;
+	margin: 0;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.movie {
+	background-color: var(--card);
+	width: 250px;
+	margin: 1rem;
+	border-radius: 0.4rem;
+	overflow: hidden;
+	transition: transform 0.2s;
+}
+.movie:hover {
+	cursor: pointer;
+	transform: scale(1.1);
+}
+.movie img {
+	height: 300px;
+	object-fit: cover;
+	width: 100%;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.movie-container {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.movie-info {
+	display: flex;
+	padding: 0.5rem;
+	justify-content: space-between;
+}
+.movie-info h6 {
+	margin: 0;
+	font-size: 1.2rem;
+}
+.head {
+	color: #fde047;
 }
 
-.App-link {
-  color: #61dafb;
+header {
+	background-color: var(--mainbg);
+	margin: 0;
+}
+header h1 {
+	text-align: center;
+	margin-top: 25px;
+	margin-bottom: 25px;
+	font-family: "Luckiest Guy", cursive;
+	font-size: 4rem;
+}
+header input {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	margin-bottom: 25px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.search {
+	background-color: transparent;
+	border: 2px solid var(--card);
+	border-radius: 50px;
+	color: var(--primary);
+	font-family: inherit;
+	font-size: 1.2rem;
+	padding: 0.5rem 1.5rem;
+}
+.search:focus {
+	outline: none;
+}
+
+.tag {
+	background-color: var(--mainbg);
+	padding: 0.5rem;
+	border-radius: 50%;
+	font-weight: bold;
+}
+.tag.green {
+	color: greenyellow;
+}
+.tag.orange {
+	color: orange;
+}
+.tag.red {
+	color: red;
 }
