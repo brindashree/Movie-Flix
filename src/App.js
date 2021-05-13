@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react';
 import './App.css';
+import AddFav from './components/AddFav';
+
 import Movie from './components/Movie';
  
 
@@ -14,6 +16,7 @@ function App() {
   
   const [movies, setMovies] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
+  const [favs, setFavourites] = useState([]);
 
   useEffect(() => {
     getMovies(api);
@@ -39,6 +42,16 @@ function App() {
     setSearchTerm(e.target.value);
   }
 
+  const addtoFavs = (movie) => {
+    const newFav = [...favs, movie];
+    setFavourites(newFav);
+  }
+
+  const removeFav = (movie) => {
+    const RFavs = favs.filter((nmovie) => nmovie !== movie);
+    setFavourites(RFavs);
+  }
+
   return (
     <div>
         <header>
@@ -56,11 +69,32 @@ function App() {
         <div className="movie-container">
       
                  {movies.length > 0 && movies.map((movie) => {
-                     return (
-                       <Movie {...movie} key={movie.id}/>
+                   return (
+                     <div
+                       onClick={() => {
+                         addtoFavs(movie);
+                       }}>
+                       <Movie {...movie} key={movie.id} Component={AddFav} favtitle="Add to Favourites"/>
+                       </div>
                      )
                  })}
         </div>
+        {favs.length > 0 && <h2> Your Favourites</h2>}
+        <div className="movie-container">
+          
+          {favs.length > 0 && favs.map((movie) => {
+            return (
+              <div onClick={() => {
+                removeFav(movie);
+                     }} >
+                <Movie {...movie} key={movie.id} Component={AddFav} favtitle="Remove from Favourites"/>
+                       </div>
+                     )
+          })}
+      </div>
+
+      
+        
       </div>
   );
 }
