@@ -17,9 +17,19 @@ function App() {
   const [movies, setMovies] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
   const [favs, setFavourites] = useState([]);
+  const [alertBox, setAlertBox] = useState('');
 
   useEffect(() => {
     getMovies(api);
+  }, []);
+
+  useEffect(() => {
+    
+    const movieFav = JSON.parse(localStorage.getItem('react-movie-app-fav'));
+    if (movieFav != null) {
+      setFavourites(movieFav);
+    }
+    
   }, []);
 
   const getMovies = (apikey) => {
@@ -38,18 +48,27 @@ function App() {
     }
   }
 
+  const saveToLocalStorage = (items) => {
+    localStorage.setItem('react-movie-app-fav', JSON.stringify(items));
+  }
+
   const handleOnChange = (e) => {
     setSearchTerm(e.target.value);
+    setAlertBox('');
   }
 
   const addtoFavs = (movie) => {
     const newFav = [...favs, movie];
     setFavourites(newFav);
+    saveToLocalStorage(newFav);
+    setAlertBox('Added to your Favourite List!!');
   }
-
+ 
   const removeFav = (movie) => {
     const RFavs = favs.filter((nmovie) => nmovie !== movie);
     setFavourites(RFavs);
+    saveToLocalStorage(RFavs);
+    setAlertBox('Removed from your Favourite List!!');
   }
 
   return (
@@ -65,7 +84,9 @@ function App() {
                 onChange={handleOnChange}
                />
           </form>
-        </header>
+      </header>
+      {alert != '' ? <div className="alert">{ alertBox }</div> : null}
+      
         <div className="movie-container">
       
                  {movies.length > 0 && movies.map((movie) => {

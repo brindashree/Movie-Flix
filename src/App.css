@@ -72,7 +72,7 @@ body {
 }
 
 header {
-	background-color: var(--mainbg);
+	/* background-color: var(--mainbg); */
 	margin: 0;
 }
 header h1 {
@@ -146,4 +146,10 @@ h2 {
 	color: #67e8f9;
 	-webkit-text-stroke: 2px black;
 	font-size: 3rem;
+}
+
+.alert {
+	text-align: center;
+	color: var(--primary);
+	font-size: 2rem;
 }
