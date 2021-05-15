@@ -3,8 +3,8 @@ const AddFav = (props) => {
         <div className="fav">
             <span>{props.title}</span>
             <svg xmlns="http://www.w3.org/2000/svg"
-                width="23"
-                height="23"
+                width="18"
+                height="18"
                 fill="red"
                 className="bi bi-suit-heart-fill"
                 viewBox="0 0 16 16">

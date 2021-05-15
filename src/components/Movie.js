@@ -15,7 +15,7 @@ const setVoteClass = (vote) => {
     }
 }
 
-const Movie = ({ title, poster_path, vote_average ,Component,favtitle}) => {
+const Movie = ({ title, poster_path, vote_average ,Component,favtitle,overview}) => {
     
     return (
         <div className="movie" >
@@ -27,8 +27,11 @@ const Movie = ({ title, poster_path, vote_average ,Component,favtitle}) => {
                 <span className={`tag ${setVoteClass(vote_average)}`} >{vote_average}</span>
                 
             </div>
-            <div className="overlay">
+            <div className="movie-over">
                 <Component title={favtitle}/>
+                <h3>Overview</h3>
+                
+                <p>{ overview }</p>
             </div>
             
         </div>

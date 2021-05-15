@@ -136,6 +136,18 @@ header input {
 
 .fav span {
 	margin-right: 1rem;
+	font-size: 12px;
+	background-color: var(--card);
+	padding: 5px;
+	font-weight: bold;
+	/* letter-spacing: 1.5px; */
+	color: var(--primary);
+	border-radius: 3px;
+
+	/* font-family: "Luckiest Guy", cursive; */
+}
+.fav {
+	margin-bottom: 7px;
 }
 
 h2 {
@@ -152,4 +164,24 @@ h2 {
 	text-align: center;
 	color: var(--primary);
 	font-size: 2rem;
+}
+
+.movie-over {
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	left: 0;
+	background-color: var(--primary);
+	color: var(--mainbg);
+	padding: 1rem;
+	overflow: auto;
+	max-height: 100%;
+	transform: translateY(100%);
+	transition: transform 0.3s ease-in-out;
+}
+.movie:hover .movie-over {
+	transform: translateY(0%);
+}
+h3 {
+	font-weight: bold;
 }
